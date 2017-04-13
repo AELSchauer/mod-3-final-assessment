@@ -13,11 +13,30 @@ gem "therubyracer"
 gem "less-rails-bootstrap"
 gem "minitest-rails"
 
-group :development do
-  gem "spring"
+### STUFF I ADDED
+gem 'figaro'
+gem 'httparty'
+gem 'faraday'
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+  gem 'simplecov'
 end
 
 group :development, :test do
+  ### STUFF I ADDED
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
   gem "minitest-rails-capybara"
-  gem "pry", :require => "pry"
+end
+
+group :development do
+  gem "spring"
 end
