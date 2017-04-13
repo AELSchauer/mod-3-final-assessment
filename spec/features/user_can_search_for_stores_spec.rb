@@ -10,10 +10,10 @@ feature 'User can search for stores' do
 
     visit root_path
 
-    binding.pry
-
     fill_in "search[zip_code]", with: "80202"
     click_on "Search"
+
+    expect(current_path).to eq(search_index_path)
 
   end
 end

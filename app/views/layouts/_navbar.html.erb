@@ -20,7 +20,7 @@
         <a href="/orders">Orders</a>
       </li>
     </ul>
-    <%= form_for :search, url: search_path, class: "navbar-form navbar-left" do |f| %>
+    <%= form_for :search, url: search_index_path, method: :get, class: "navbar-form navbar-left" do |f| %>
       <div class="form-group">
         <%= f.text_field :zip_code, class: "form-control", placeholder: "Search" %>
         <%= f.submit "Search", class: "btn btn-default" %>
