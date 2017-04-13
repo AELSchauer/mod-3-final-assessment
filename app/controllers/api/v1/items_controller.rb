@@ -4,6 +4,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
+    render json: Item.create(item_params)
   end
 
   def update
@@ -15,5 +16,11 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     render json: Item.find(params[:id]).destroy, status: 204
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:id, :name, :description, :image_url)
   end
 end

@@ -47,4 +47,18 @@ describe 'Items API' do
     expect(response.status).to eq(204)
     expect{ Item.find(id) }.to raise_error(ActiveRecord::RecordNotFound)
   end
+
+  it 'can post a single item' do
+    item_params = attributes_for(:item)
+
+    expect{ post "/api/v1/items/", item: item_params }.to change(Item, :count).by(1)
+
+    expect(response).to be_success
+    expect(response.status).to eq(200)
+    expect(item_params[:name]).to eq(Item.last.name)
+    expect(item_params[:description]).to eq(Item.last.description)
+    expect(item_params[:image_url]).to eq(Item.last.image_url)
+  end
+
+
 end
