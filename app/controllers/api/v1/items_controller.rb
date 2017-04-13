@@ -10,8 +10,10 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def show
+    render json: Item.find(params[:id])
   end
 
   def destroy
+    render json: Item.find(params[:id]).destroy, status: 204
   end
 end
