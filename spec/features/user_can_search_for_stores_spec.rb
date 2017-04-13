@@ -2,18 +2,27 @@ require 'rails_helper'
 
 feature 'User can search for stores' do
   it 'by the zip code' do
-      # Then my current path should be "/search" (ignoring params)
-      # And I should see stores within 25 miles of 80202
-      # And I should see a message that says "16 Total Stores"
-      # And I should see exactly 10 results
-      # And I should see the long name, city, distance, phone number and store type for each of the 10 results
+    VCR.use_cassette('80020') do
+      expected_stores = BestBuy.stores("80202")
 
-    visit root_path
+      visit root_path
 
-    fill_in "search[zip_code]", with: "80202"
-    click_on "Search"
+      fill_in "search[zip_code]", with: "80202"
+      click_on "Search"
 
-    expect(current_path).to eq(search_index_path)
+      expect(current_path).to eq(search_index_path)
 
+      expect(page).to have_content("16 Total Stores")
+      expect(page).to have_selector('tr.store', count: 10)
+      expected_stores.each do |store|
+        within("#store-#{store.id}") do
+          expect(page).to have_content(store.name)
+          expect(page).to have_content(store.city)
+          expect(page).to have_content(store.distance)
+          expect(page).to have_content(store.phone)
+          expect(page).to have_content(store.store_type)
+        end
+      end
+    end
   end
 end

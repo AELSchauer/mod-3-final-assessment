@@ -1,8 +1,20 @@
-<h1>Search#index</h1>
-<p>Find me in app/views/search/index.html.erb</p>
-
+<p><%= @total_stores %> Total Stores</p>
+<br>
 <table>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Distance</th>
+    <th>Phone Number</th>
+    <th>Store Type</th>
+  </tr>
   <% @stores.each do |store| %>
-    
+    <tr id="store-<%= store.id %>" class="store">
+      <td><%= store.name %></td>
+      <td><%= store.city %></td>
+      <td><%= store.distance %></td>
+      <td><%= store.phone %></td>
+      <td><%= store.store_type %></td>
+    </tr>
   <% end %>
 </table>

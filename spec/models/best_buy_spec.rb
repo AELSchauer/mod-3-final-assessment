@@ -14,6 +14,7 @@ describe BestBuy do
         store = stores.first
 
         expect(stores.count).to eq(10)
+        expect(store.id).to eq(2740)
         expect(store.name).to eq("BEST BUY MOBILE - CHERRY CREEK SHOPPING CENTER")
         expect(store.city).to eq("DENVER")
         expect(store.distance).to eq(3.45)
