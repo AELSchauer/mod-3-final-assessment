@@ -1,15 +1,7 @@
 class BestBuy < OpenStruct
-  def id
-    storeId
-  end
-
-  def name
-    longName
-  end
-
-  def store_type
-    storeType
-  end
+  alias_attribute :id, :storeId
+  alias_attribute :name, :longName
+  alias_attribute :store_type, :storeType
 
   def self.service
     @service ||= BestBuyService.new

@@ -33,8 +33,8 @@ describe 'Items API' do
     expect(response_item["name"]).to eq(item.name)
     expect(response_item["description"]).to eq(item.description)
     expect(response_item["image_url"]).to eq(item.image_url)
-    # expect(response_item["created_at"]).to eq(nil)
-    # expect(response_item["updated_at"]).to eq(nil)
+    expect(response_item["created_at"]).to eq(nil)
+    expect(response_item["updated_at"]).to eq(nil)
   end
 
   it 'can delete a single item' do

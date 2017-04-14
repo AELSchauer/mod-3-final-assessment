@@ -17,6 +17,7 @@ gem "minitest-rails"
 gem 'figaro'
 gem 'httparty'
 gem 'faraday'
+gem 'active_model_serializers'
 
 group :test do
   gem 'vcr'

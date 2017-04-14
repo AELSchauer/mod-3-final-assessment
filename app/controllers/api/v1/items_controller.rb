@@ -1,13 +1,13 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    render json: Item.all.without_dates
+    render json: Item.all
   end
 
   def create
     render json: Item.create(item_params)
   end
 
-  def update
+def update
     render json: Item.update(params[:id], item_params)
   end
 
